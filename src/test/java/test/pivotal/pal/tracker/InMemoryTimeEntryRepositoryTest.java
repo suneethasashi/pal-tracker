@@ -11,6 +11,7 @@ import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class InMemoryTimeEntryRepositoryTest {
+
     @Test
     public void create() throws Exception {
         InMemoryTimeEntryRepository repo = new InMemoryTimeEntryRepository();
@@ -62,6 +63,7 @@ public class InMemoryTimeEntryRepositoryTest {
                 new TimeEntry(2L, 789L, 654L, LocalDate.parse("2017-01-07"), 4)
         );
         assertThat(repo.list()).containsExactlyInAnyOrderElementsOf(expected);
+        // Do they want an In memory DB ? like H2 - I think anything is fine.  Even a file
     }
 
     @Test
