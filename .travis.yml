@@ -15,9 +15,12 @@ jobs:
       install: skip
       script: ./gradlew clean build
       before_deploy:
-        - git config --local user.name "Travis CI"
-        - git config --local user.email "travis@example.com"
-        - git tag -f $RELEASE_TAG
+        #- git config --local user.name "Travis CI"
+        #- git config --local user.email "travis@example.com"
+        #- git tag -f $RELEASE_TAG
+         - git config --local user.name "suneethasashi"
+         - git config --local user.email "sun_sree@yahoo.com"
+         - git tag -f $RELEASE_TAG
       deploy:
         provider: releases
         api_key: $GITHUB_OAUTH_TOKEN
