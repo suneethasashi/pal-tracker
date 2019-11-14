@@ -6,33 +6,25 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//insomnia tool like postman
 @Repository
 public class InMemoryTimeEntryRepository implements TimeEntryRepository {
-
-    //repo.find(createdTimeEntry.getId());
-    // repo.list()
-    // TimeEntry updatedEntry = repo.update(
-    //         created.getId(),
-    //       new TimeEntry(321L, 654L, LocalDate.parse("2017-01-09"), 5));
 
 
     private List<TimeEntry> timeEntryList = new ArrayList<>();
     private int countEntries = 0;
 
-    //Not a list just a single ob
     public TimeEntry create(TimeEntry timeEntry) {
-        //int size = timeEntryList.size();
-        //timeEntry.setId(timeEntryList.size() + 1L);
         if (timeEntry.getId() == 0) {
-
             timeEntry.setId(++this.countEntries);
-
         }
         timeEntryList.add(timeEntry);
         return find(timeEntry.getId());
     }
 
     public TimeEntry find(long id) {
+        //timeEntryList.stream().filter()
         for (TimeEntry timeEntry : timeEntryList) {
             if (timeEntry.getId() == id)
                 return timeEntry;
