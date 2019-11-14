@@ -8,7 +8,7 @@ import java.util.List;
 
 
 //insomnia tool like postman
-@Repository
+
 public class InMemoryTimeEntryRepository implements TimeEntryRepository {
 
 
