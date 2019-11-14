@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import javax.sql.DataSource;
 
@@ -11,19 +12,20 @@ import javax.sql.DataSource;
 public class PalTrackerApplication {
 
 
-    @Qualifier("timeEntryRepository")
-    private static JdbcTimeEntryRepository timeEntryRepository;
-    private static DataSource dataSource;
+//    @Qualifier("timeEntryRepository")
+//    private JdbcTimeEntryRepository timeEntryRepository;
+//    @Autowired
+//    private DataSource dataSource;
 
 
     public static void main(String[] args){
-        timeEntryRepository = new JdbcTimeEntryRepository(dataSource);
         SpringApplication.run(PalTrackerApplication.class, args);
 
     }
 
-    public TimeEntryRepository getTimeEntryRepository() {
-        return timeEntryRepository;
+    @Bean("timeEntryRepository")
+    public TimeEntryRepository getTimeEntryRepository(DataSource dataSource) {
+        return new JdbcTimeEntryRepository(dataSource);
     }
 
 
